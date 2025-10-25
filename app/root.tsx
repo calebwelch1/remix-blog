@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -33,6 +34,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+          <header className="header">
+          <nav className="navbar">
+            <Link to="/" className="logo">Remix</Link>
+            <ul className="nav-links">
+              <li><Link to="/blog/3" className="nav-link">Blog</Link></li>
+              <li><Link to="/todo" className="nav-link">Todo</Link></li>
+              <li><Link to="/timer" className="nav-link">Timer</Link></li>
+            </ul>
+          </nav>
+        </header>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -41,8 +52,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+// export function Layout({ children }: { children: React.ReactNode }) {
+//   return (
+//     <div className="layout">
+//       <header className="header">
+//         <nav className="navbar">
+//           <Link to="/" className="logo">Remix</Link>
+//           <ul className="nav-links">
+//             <li>
+//               <Link to="/posts" className="nav-link">Posts</Link>
+//             </li>
+//           </ul>
+//         </nav>
+//       </header>
+
+//       <main className="main">
+//         {children}
+//       </main>
+//     </div>
+//   );
+// }
+// wrap app in jsx above
 export default function App() {
-  return <Outlet />;
+  return (
+    <Outlet />
+  )
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
