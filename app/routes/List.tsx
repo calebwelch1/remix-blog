@@ -6,58 +6,58 @@ function List() {
 }
 export default List;
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
-const CustomerDetails = ({ customerId }) => {
-  const [customerData, setCustomerData] = useState(null);
+// const CustomerDetails = ({ customerId }) => {
+//   const [customerData, setCustomerData] = useState(null);
 
-  useEffect(() => {
-    const fetchCustomerData = async () => {
-      const query = `
-        query {
-          customer(id: "${customerId}") {
-            id
-            firstName
-            lastName
-            email
-            orders(first: 5) {
-              edges {
-                node {
-                  id
-                  name
-                  totalPrice
-                }
-              }
-            }
-          }
-        }
-      `;
+//   useEffect(() => {
+//     const fetchCustomerData = async () => {
+//       const query = `
+//         query {
+//           customer(id: "${customerId}") {
+//             id
+//             firstName
+//             lastName
+//             email
+//             orders(first: 5) {
+//               edges {
+//                 node {
+//                   id
+//                   name
+//                   totalPrice
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       `;
 
-      const response = await fetch('/shopify-graphql-endpoint', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${yourShopifyAccessToken}`,
-        },
-        body: JSON.stringify({ query }),
-      });
+//       const response = await fetch('/shopify-graphql-endpoint', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Authorization': `Bearer ${yourShopifyAccessToken}`,
+//         },
+//         body: JSON.stringify({ query }),
+//       });
 
-      const data = await response.json();
-      setCustomerData(data);
-    };
+//       const data = await response.json();
+//       setCustomerData(data);
+//     };
 
-    fetchCustomerData();
-  }, [customerId]);  // Fetch data when the customerId changes
+//     fetchCustomerData();
+//   }, [customerId]);  // Fetch data when the customerId changes
 
-  if (!customerData) return <div>Loading...</div>;
+//   if (!customerData) return <div>Loading...</div>;
 
-  return (
-    <div>
-      <h1>{customerData.customer.firstName} {customerData.customer.lastName}</h1>
-      <p>Email: {customerData.customer.email}</p>
-      {/* Render more customer data here */}
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>{customerData.customer.firstName} {customerData.customer.lastName}</h1>
+//       <p>Email: {customerData.customer.email}</p>
+//       {/* Render more customer data here */}
+//     </div>
+//   );
+// };
 
-export default CustomerDetails;
+// export default CustomerDetails;

@@ -6,6 +6,7 @@ export default [
     // route("/blog", "routes/blog.tsx"),
     route("/blog/:blogId", "routes/blog.tsx"),
     route("/todo", "routes/todo.tsx"),
+    route("/counter", "routes/counter.tsx"),
     // nested routes
     route("dashboard", "routes/dashboard.tsx", [
         // this will be dashboard/finances
