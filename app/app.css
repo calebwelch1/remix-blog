@@ -149,3 +149,22 @@ body {
 .strikethrough {
   text-decoration: line-through;
 }
+
+.clock-container {
+  width: 100vw;
+  padding: 10px 0;
+}
+
+.clock {
+  color: black;
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  text-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.75);
+}
+
+.box {
+  border: 3px solid black;
+  padding: 25px;
+}
