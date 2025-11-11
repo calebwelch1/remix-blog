@@ -54,7 +54,23 @@ export default function Counter() {
   function handlePaymentChange(event: any) {
     setPayment(event.target.value);
   }
+
+  const [foods, setFoods] = useState(["apple", "orange", "banana"]);
+  function handleAddFood(){
+    const newFood = document.getElementById("foodinput")?.value;
+    document.getElementById("foodinput").value="";
+
+    // setFoods([...foods, newFood])
+    // with updater
+    setFoods((prevFoods) => [...prevFoods, newFood]);
+
+  }
+
+  function handleRemoveFood(index: number){
+    setFoods(foods.filter((el, i) => i !== index));
+  }
   return (
+    
     <main className="flex flex-col items-center justify-center pt-16 pb-4">
       <h1 className="text-3xl font-bold mb-4">counter</h1>
       <p>{count}</p>
@@ -85,6 +101,15 @@ export default function Counter() {
       <input type="number" value={car.year} onChange={handleYearChange}></input>
       <input type="text" value={car.make} onChange={handleMakeChange}></input>
       <input type="text" value={car.model} onChange={handleModelChange}></input>
+
+      {/* update arrays */}
+      <ul>
+        {foods.map((food, index) =>
+          <li key={index} onClick={()=>handleRemoveFood(index)}>{food}</li>
+        )}
+      </ul>
+        <input type="text" id="foodinput" placeholder="enter food name"/>
+        <button onClick={handleAddFood}>Add Food</button>
     </main>
   );
 }

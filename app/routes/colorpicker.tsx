@@ -23,7 +23,7 @@ export async function action() {
 
 // Component
 export default function ColorPicker() {
-
+    
   return (
     <main className="flex flex-col items-center justify-center pt-16 pb-4">
       <h1 className="text-3xl font-bold mb-4">color picker</h1>
